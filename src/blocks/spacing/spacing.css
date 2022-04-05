@@ -1,0 +1,16 @@
+.spacing {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1240px) {
+  .spacing {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .spacing {
+    padding: 0 18px;
+  }
+}

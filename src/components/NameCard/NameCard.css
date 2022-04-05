@@ -1,0 +1,139 @@
+.name-card {
+  padding-top: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-card__block-text {
+  max-width: 600px;
+}
+
+.name-card__name {
+  margin: 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.name-card__duty {
+  margin: 0;
+  margin-top: 19px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: #111111;
+}
+
+.name-card__description {
+  margin: 0;
+  margin-top: 24px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.name-card__list-resources {
+  margin: 0;
+  margin-top: 98px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name-card__item-resource {
+  margin-right: 20px;
+}
+
+.name-card__item-resource:last-of-type {
+  margin-right: 0;
+}
+
+.name-card__link-resource {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: black;
+}
+
+.name-card__avatar {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .name-card__block-text {
+    max-width: 364px;
+  }
+
+  .name-card__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .name-card__duty {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .name-card__description {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .name-card__avatar {
+    width: 255px;
+    height: 307px;
+  }
+
+  .name-card__list-resources {
+    margin-top: 86px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .name-card {
+    flex-direction: column-reverse;
+    padding-top: 60px;
+  }
+
+  .name-card__block-text {
+    margin-top: 40px;
+  }
+
+  .name-card__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .name-card__duty {
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .name-card__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .name-card__avatar {
+    width: 292px;
+    height: 352px;
+  }
+
+  .name-card__list-resources {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,88 @@
+.sign-up__content{
+  max-width: 396px;
+  margin: 0 auto;
+  padding: 70px 30px;
+}
+
+.sign-up__title{
+  margin: 0;
+  margin-top: 36px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.sign-up__submit {
+  display: block;
+  width: 100%;
+  border: none;
+  height: 45px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #3456F3;
+  margin-top: 90px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.sign-up__link{
+  text-decoration: none;
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #A0A0A0;
+  margin-top: 17px;
+}
+
+.sign-up__link-span{
+  color: #3456F3;
+}
+
+.sign-up__block-inputs{
+  width: 100%;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .sign-up__content{
+    max-width: 396px;
+    margin: 0 auto;
+    padding-top: 55px;
+  }
+
+  .sign-up__logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sign-up__title{
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .sign-up__block-inputs {
+    margin-top: 81px;
+  }
+
+  .sign-up__submit {
+    margin-top: 178px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .sign-up__link {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 15px;
+  }
+
+  .sign-up__link-span{
+    margin-left: 5px;
+  }
+}
