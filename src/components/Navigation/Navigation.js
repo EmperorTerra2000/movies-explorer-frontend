@@ -15,7 +15,7 @@ function Navigation({ onNavMenu, isOpen, locationPath, onClose }) {
   if (locationPath !== '/') {
     selectorNavigation += ' navigation_type_burger';
     selectorContent += ' navigation__content_type_burger';
-    selectorListLinks += ' navigation__list-links_type_burger navigation__list-links_margin_right';
+    selectorListLinks += ' navigation__list-links_type_burger navigation__list-links_margin_left';
     selectorItemLink += ' navigation__item-link_type_burger';
     selectorLinkElement +=
       ' navigation__link-element_type_burger navigation__link-element_colors_black';

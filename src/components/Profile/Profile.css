@@ -72,6 +72,7 @@
 @media screen and (max-width: 910px) {
   .profile__content {
     padding-top: 236px;
+    padding-bottom: 250px;
   }
 
   .profile__list-info {
@@ -87,6 +88,7 @@
   .profile__content {
     padding: 0 30px;
     padding-top: 70px;
+    padding-bottom: 24px;
   }
 
   .profile__list-info {

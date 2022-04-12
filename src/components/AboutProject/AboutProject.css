@@ -46,7 +46,7 @@
 }
 
 .about-project__progress:first-of-type > .about-project__deadline {
-  background-color: #2be080;
+  background-color: #3456F3;
 }
 
 @media screen and (max-width: 1024px) {

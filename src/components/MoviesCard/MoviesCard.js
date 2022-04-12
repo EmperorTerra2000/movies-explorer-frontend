@@ -17,16 +17,18 @@ function MoviesCard() {
 
   return (
     <article className="movies-card">
-      <img className="movies-card__image" src={imageCard} alt="баннер фильма" />
       <div className="movies-card__item">
-        <h2 className="movies-card__title">Киноальманах «100 лет дизайна»</h2>
+        <div className="movies-card__text">
+          <h2 className="movies-card__title">33 слова о дизайне</h2>
+          <p className="movies-card__duration">1ч 47м</p>
+        </div>
         {location.pathname === '/saved-movies' ? (
           <button className="movies-card__delete hover hover_type_button" />
         ) : (
           <button className={selectorsCardLike} onClick={handleLiked} />
         )}
       </div>
-      <p className="movies-card__duration">1ч 42м</p>
+      <img className="movies-card__image" src={imageCard} alt="баннер фильма" />
     </article>
   );
 }
