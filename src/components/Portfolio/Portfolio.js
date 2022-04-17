@@ -7,17 +7,29 @@ function Portfolio() {
         <h2 className="portfolio__title">Портфолио</h2>
         <ul className="portfolio__list-projects">
           <li className="portfolio__item-project">
-            <a href="https://github.com" className="portfolio__link hover hover_type_link">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com"
+              className="portfolio__link hover hover_type_link">
               Статичный сайт
             </a>
           </li>
           <li className="portfolio__item-project">
-            <a href="https://github.com" className="portfolio__link hover hover_type_link">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com"
+              className="portfolio__link hover hover_type_link">
               Адаптивный сайт
             </a>
           </li>
           <li className="portfolio__item-project">
-            <a href="https://github.com" className="portfolio__link hover hover_type_link">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com"
+              className="portfolio__link hover hover_type_link">
               Одностраничное приложение
             </a>
           </li>

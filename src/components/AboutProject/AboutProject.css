@@ -46,6 +46,7 @@
 }
 
 .about-project__progress:first-of-type > .about-project__deadline {
+  color: #ffffff;
   background-color: #3456F3;
 }
 
