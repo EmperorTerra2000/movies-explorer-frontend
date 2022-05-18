@@ -1,9 +1,13 @@
 import './FilterCheckbox.css';
 
-function FilterCheckbox() {
+function FilterCheckbox({ filterRef }) {
   return (
     <div className="filter-checkbox">
-      <input className="filter-checkbox__input" type="checkbox" id="checkboxInput"></input>
+      <input
+        ref={filterRef}
+        className="filter-checkbox__input"
+        type="checkbox"
+        id="checkboxInput"></input>
       <label className="filter-checkbox__label" htmlFor="checkboxInput">
         Короткометражки
       </label>

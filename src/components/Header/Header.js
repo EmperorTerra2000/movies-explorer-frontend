@@ -1,22 +1,13 @@
 import './Header.css';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
-import { useLocation } from 'react-router-dom';
 
-function Header({ onNavMenu, isOpen, onClose }) {
-  const location = useLocation();
-  const selectorsHeader = location.pathname !== '/' ? 'header header_type_bg-inherit' : 'header';
-
+function Header({ onNavMenu, isOpen, onClose, loggedIn }) {
   return (
-    <header className={selectorsHeader}>
+    <header className="header">
       <div className="header__content spacing spacing_type_header-and-footer">
         <Logo />
-        <Navigation
-          onNavMenu={onNavMenu}
-          isOpen={isOpen}
-          onClose={onClose}
-          locationPath={location.pathname}
-        />
+        <Navigation onNavMenu={onNavMenu} isOpen={isOpen} onClose={onClose} loggedIn={loggedIn} />
       </div>
     </header>
   );

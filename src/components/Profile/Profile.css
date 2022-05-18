@@ -37,9 +37,15 @@
 
 .profile__control {
   margin-top: 181px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile__item-control {
+  background: transparent;
+  border: none;
+  padding: 0;
   margin: 0;
   margin-bottom: 16px;
   font-weight: 400;

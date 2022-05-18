@@ -1,8 +1,5 @@
-.header_type_bg-inherit {
-  background-color: inherit;
-}
-
 .header__content {
+  background-color: inherit;
   min-height: 74px;
   display: flex;
   justify-content: space-between;
