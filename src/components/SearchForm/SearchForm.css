@@ -1,0 +1,125 @@
+.search-form {
+  padding-top: 69px;
+}
+
+.search-form__content::after {
+  content: '';
+  display: block;
+  margin-top: 70px;
+  height: 1px;
+  width: 100%;
+  background-color:#E8E8E8;;
+}
+
+.search-form__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F4F4F4;
+  border-radius: 9px;
+  height: 72px;
+}
+
+.search-form__form::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background-color: #CBCBCB;
+  margin-left: -6px;
+  order: 2;
+}
+
+.search-form__block-inputs {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 78.1%;
+  height: 100%;
+  order: 1;
+}
+
+.search-form__item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.search-form__input {
+  box-sizing: border-box;
+  border: none;
+  height: 100%;
+  width: 95%;
+  font-size: 18px;
+  line-height: 20px;
+  padding-left: 63px;
+  padding-right: 21px;
+  background: inherit;
+}
+
+.search-form__item::before{
+  position: absolute;
+  content: '';
+  background: url('../../images/search-icon.svg') no-repeat center;
+  width: 30px;
+  height: 30px;
+  top: 21px;
+  left: 21px;
+}
+
+.search-form__submit {
+  cursor: pointer;
+  position: absolute;
+  right: 7px;
+  top: 20px;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: url('../../images/find.svg') #3456f3 no-repeat center;
+}
+
+@media screen and (max-width: 1024px) {
+  .search-form {
+    padding-top: 79px;
+  }
+
+  .search-form__block-inputs {
+    width: 68.9%;
+  }
+  .search-form__content::after{
+    margin-top: 110px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search-form__input {
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 19px;
+  }
+
+  .search-form__form {
+    display: block;
+    background: none;
+  }
+
+  .search-form__submit {
+    right: 18px;
+  }
+
+  .search-form__block-inputs{
+    width: 100%;
+    height: 72px;
+    background-color: #F4F4F4;
+    border-radius: 9px;
+  }
+
+  .search-form__item::before{
+    display: none;
+  }
+
+  .search-form__form::after{
+    display: none;
+  }
+}

@@ -1,0 +1,8 @@
+@import url('./vendor/normalize.css');
+@import url('./fonts/inter.css');
+@import url('./blocks/spacing/spacing.css');
+@import url('./blocks/spacing/_type/spacing_type_header-and-footer.css');
+@import url('./blocks/spacing/_type/spacing_type_movies.css');
+@import url('./blocks/hover/hover.css');
+@import url('./blocks/hover/_type/hover_type_button.css');
+@import url('./blocks/hover/_type/hover_type_link.css');
