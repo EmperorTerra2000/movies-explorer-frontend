@@ -18,7 +18,7 @@ function SearchForm(props) {
             </div>
             <button type="submit" className="search-form__submit hover hover_type_button"></button>
           </div>
-          <FilterCheckbox filterRef={props.filterRef} />
+          <FilterCheckbox filterRef={props.filterRef} onChange={props.onChange} />
         </form>
       </div>
     </section>

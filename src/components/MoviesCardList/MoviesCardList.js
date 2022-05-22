@@ -16,9 +16,11 @@ function MoviesCardList(props) {
   React.useEffect(() => {
     let cards;
     setFoundListCardsSavedMovies(props.savedCardsMovies);
-    // если в поисковике есть ключевое слово, то...
-    if (props.valueForm) {
-      if (location.pathname === '/movies') {
+
+    if (location.pathname === '/movies') {
+      if (!props.valueForm) {
+        setFoundListCardsMovies([]);
+      } else {
         // происходит логика поиска фильмов по ключевому слову, после найденные фильмы
         // присваиваются в переменную
         cards = moviesSearch(props.listCards, {
@@ -26,13 +28,13 @@ function MoviesCardList(props) {
           valueForm: props.valueForm,
         });
         setFoundListCardsMovies(cards);
-      } else if (location.pathname === '/saved-movies') {
-        cards = moviesSearch(props.savedCardsMovies, {
-          filterForm: props.filterForm,
-          valueForm: props.valueForm,
-        });
-        setFoundListCardsSavedMovies(cards);
       }
+    } else if (location.pathname === '/saved-movies') {
+      cards = moviesSearch(props.savedCardsMovies, {
+        filterForm: props.filterForm,
+        valueForm: props.valueForm,
+      });
+      setFoundListCardsSavedMovies(cards);
     }
   }, [props.valueForm, props.listCards, props.savedCardsMovies, props.filterForm]);
 

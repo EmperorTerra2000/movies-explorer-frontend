@@ -1,14 +1,15 @@
 import './Login.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import * as auth from '../../utils/Auth';
 import { useFormWithValidation } from '../../utils/FormValidator';
 import ItemInput from '../ItemInput/ItemInput';
 import Logo from '../Logo/Logo';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Login(props) {
   const [errorServer, setErrorServer] = useState([]);
+  const history = useHistory();
 
   const validationForm = useFormWithValidation({
     email: '',
@@ -21,6 +22,12 @@ function Login(props) {
   const isValid = validationForm.isValid;
 
   const patternToEmail = '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$';
+
+  React.useEffect(() => {
+    if (props.loggedIn) {
+      history.push('/movies');
+    }
+  }, [props.loggedIn]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

@@ -1,8 +1,15 @@
 const moviesSearch = (cards, parameters) => {
   const maxDuration = parameters.filterForm ? 40 : false;
-
   if (!parameters.valueForm) {
-    return cards;
+    return cards.filter((item) => {
+      const isCorrectDuration = item.duration < maxDuration;
+
+      if (maxDuration) {
+        return isCorrectDuration;
+      }
+
+      return true;
+    });
   }
 
   return cards.filter((item) => {

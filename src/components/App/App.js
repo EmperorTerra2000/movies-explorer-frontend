@@ -28,8 +28,10 @@ function App() {
   const history = useHistory();
   const [savedCardsMovies, setSavedCardsMovies] = React.useState([]); // стейт сохр-ых фильмов поступающих из api
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedInProtected, setLoggedInProtected] = React.useState('start');
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false); // стейт меню бургера
   const [currentUser, setCurrentUser] = React.useState({}); // данные текущего пользователя
+  const [okRequestProfile, setOkRequestProfile] = React.useState(false); // успешен ли был запрос по изм-ию профиля
 
   React.useEffect(() => {
     tokenCheck();
@@ -48,14 +50,17 @@ function App() {
           if (res) {
             //авторизуем пользователя
             handleLogin();
-            history.push('/movies');
+            // history.push('/movies');
           }
         })
         .catch((err) => {
           console.log(err);
+          handleSignOut();
           //удаляем токен из локалстореджа если он не валидный
           localStorage.removeItem('token');
         });
+    } else {
+      handleSignOut();
     }
   }
 
@@ -87,16 +92,22 @@ function App() {
           name: user.data.name,
           email: user.data.email,
         });
+
+        setOkRequestProfile(true);
+
+        setTimeout(() => setOkRequestProfile(false), 4000);
       })
       .catch((err) => console.log(err));
   };
 
   function handleLogin() {
+    setLoggedInProtected(true);
     setLoggedIn(true);
   }
 
   function handleSignOut() {
     setLoggedIn(false);
+    setLoggedInProtected(false);
   }
 
   const handleNavMenuClick = () => {
@@ -131,6 +142,7 @@ function App() {
             <ProtectedRoute
               path="/movies"
               loggedIn={loggedIn}
+              loggedInProtected={loggedInProtected}
               component={Movies}
               setCurrentUser={setCurrentUser}
               tokenCheck={tokenCheck}
@@ -151,6 +163,7 @@ function App() {
             <ProtectedRoute
               path="/saved-movies"
               onCardDelete={handleCardDelete}
+              loggedInProtected={loggedInProtected}
               loggedIn={loggedIn}
               component={SavedMovies}
               tokenCheck={tokenCheck}
@@ -168,6 +181,8 @@ function App() {
             />
             <ProtectedRoute
               path="/profile"
+              okRequestProfile={okRequestProfile}
+              loggedInProtected={loggedInProtected}
               onSignOut={handleSignOut}
               onChangeInfoMe={handleChangeInfoMe}
               loggedIn={loggedIn}
@@ -176,7 +191,12 @@ function App() {
             />
           </Route>
           <Route path="/signup">
-            <Register history={history} />
+            <Register
+              loggedIn={loggedIn}
+              history={history}
+              tokenCheck={tokenCheck}
+              handleLogin={handleLogin}
+            />
           </Route>
           <Route path="/signin">
             <Login

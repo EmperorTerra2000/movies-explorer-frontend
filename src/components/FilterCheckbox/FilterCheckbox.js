@@ -1,9 +1,10 @@
 import './FilterCheckbox.css';
 
-function FilterCheckbox({ filterRef }) {
+function FilterCheckbox({ filterRef, onChange }) {
   return (
     <div className="filter-checkbox">
       <input
+        onChange={onChange}
         ref={filterRef}
         className="filter-checkbox__input"
         type="checkbox"

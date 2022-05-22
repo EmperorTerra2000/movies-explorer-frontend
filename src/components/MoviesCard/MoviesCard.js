@@ -61,7 +61,9 @@ function MoviesCard(props) {
           <button className="movies-card__delete hover hover_type_button" onClick={handleDelete} />
         </Route>
       </div>
-      <img className="movies-card__image" src={urlImage} alt="баннер фильма" />
+      <a rel="noreferrer" target="_blank" href={props.card.trailerLink}>
+        <img className="movies-card__image" src={urlImage} alt="баннер фильма" />
+      </a>
     </article>
   );
 }

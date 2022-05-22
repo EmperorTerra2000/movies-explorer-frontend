@@ -1,14 +1,15 @@
 import './Register.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as auth from '../../utils/Auth';
 import { useFormWithValidation } from '../../utils/FormValidator';
 import ItemInput from '../ItemInput/ItemInput';
 import Logo from '../Logo/Logo';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Register(props) {
   const [errorServer, setErrorServer] = useState('');
+  const history = useHistory();
 
   const validationForm = useFormWithValidation({
     name: '',
@@ -24,6 +25,12 @@ function Register(props) {
   const patternToEmail = '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$';
   const patternToName = '^[а-яёА-ЯЁa-zA-Z-\\s]+$';
 
+  useEffect(() => {
+    if (props.loggedIn) {
+      history.push('/movies');
+    }
+  }, [props.loggedIn]);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const { name, email, password } = valueForm;
@@ -31,9 +38,24 @@ function Register(props) {
     auth
       .register(name, email, password)
       .then((data) => {
-        resetForm();
-        setErrorServer('');
-        props.history.push('/signin');
+        resetForm(); // стираем поля с инпутов
+        setErrorServer(''); // стираем стейт с ошибкой
+
+        // после регистрации, сразу авторизуемся
+        auth
+          .authorization(email, password)
+          .then((data) => {
+            if (data.token) {
+              localStorage.setItem('token', data.token);
+              props.handleLogin();
+              props.tokenCheck();
+              props.history.push('/movies');
+            }
+          })
+          .catch((err) => {
+            resetForm();
+            if (!err.message) setErrorServer(err);
+          });
       })
       .catch((err) => {
         resetForm();

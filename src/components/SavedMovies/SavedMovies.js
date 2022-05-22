@@ -36,12 +36,19 @@ function SavedMovies(props) {
     setFilterForm(filterSavedMoviesRef.current.checked); // сохранить состояние фильтра в стейт
   };
 
+  // событие нажатия чекбокса фильтра
+  const handleChangeFilter = (evt) => {
+    setFilterForm(evt.target.checked);
+    setValueForm(valueSavedMoviesRef.current.value);
+  };
+
   return (
     <>
       <SearchForm
         filterRef={filterSavedMoviesRef}
         valueRef={valueSavedMoviesRef}
         handleSubmit={handleSubmit}
+        onChange={handleChangeFilter}
       />
       <MoviesCardList
         savedCardsMovies={props.savedCardsMovies}

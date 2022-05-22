@@ -43,6 +43,17 @@ function Movies(props) {
       setListCards(listCardsMovies);
       setValueForm(valueSearch);
       setFilterForm(filterSearch === 'true');
+    } else {
+      moviesApi
+        .getMovies()
+        .then((data) => {
+          setListCards(data);
+          localStorage.setItem('listCardsMovies', JSON.stringify(data));
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsErrorApi(true);
+        });
     }
 
     mainApi
@@ -70,25 +81,11 @@ function Movies(props) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    setIsPreloader(true); // включение прелоадера
-
     setValueForm(valueMoviesRef.current.value); // сохранить значение инпута в переменную состояния
     setFilterForm(filterRef.current.checked); // сохранить состояние фильтра в стейт
 
     localStorage.setItem('filterSearchMovies', filterRef.current.checked); // сохранение состояния фильтра в локалсторадж
     localStorage.setItem('valueSearchMovies', valueMoviesRef.current.value); // сохранение значения инпута в локалсторадж
-
-    moviesApi
-      .getMovies()
-      .then((data) => {
-        setListCards(data);
-        localStorage.setItem('listCardsMovies', JSON.stringify(data));
-        setIsPreloader(false); // выключение прелоадера
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsErrorApi(true);
-      });
   };
 
   // инициализация кол-ва отрендеренных карточек в зависимости от

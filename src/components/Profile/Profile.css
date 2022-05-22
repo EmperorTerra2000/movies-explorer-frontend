@@ -56,6 +56,27 @@
   cursor: pointer;
 }
 
+.profile__successful-request{
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #0eda6d;
+  text-align: center;
+  transition: all linear 600ms;
+}
+
+.profile__item-control_disabled{
+  opacity: 0.3;
+}
+
+.profile__successful-request_active{
+  opacity: 1;
+}
+
 .profile__item-control_colors_red {
   font-weight: 500;
   color: #ff004d;

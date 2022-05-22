@@ -9,7 +9,6 @@ function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const [name, setName] = React.useState('user');
-  const [email, setEmail] = React.useState('email');
 
   const validationForm = useFormWithValidation({
     name: currentUser.name,
@@ -19,7 +18,6 @@ function Profile(props) {
   const patternToName = '^[а-яёА-ЯЁa-zA-Z-\\s]+$';
 
   const valueForm = validationForm.values;
-  const resetForm = validationForm.resetForm;
   const errorMessage = validationForm.errors;
   const handleChange = validationForm.handleChange;
   const isValid = validationForm.isValid;
@@ -28,21 +26,23 @@ function Profile(props) {
   //его данные будут использованы в управляемых компонентах
   React.useEffect(() => {
     setName(currentUser.name);
-    setEmail(currentUser.email);
   }, [currentUser]);
 
   //метод выхода из профиля
   function signOut() {
-    localStorage.removeItem('token');
     props.onSignOut();
     props.history.push('/');
+    // удаление из локального хранилища всех переменных
+    localStorage.clear();
   }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const { name, email } = valueForm;
 
-    props.onChangeInfoMe({ name, email });
+    if (!(name === currentUser.name && email === currentUser.email)) {
+      props.onChangeInfoMe({ name, email });
+    }
   };
 
   return (
@@ -75,11 +75,19 @@ function Profile(props) {
             selectorElement="profile"
           />
         </ul>
+        <p
+          className={`profile__successful-request ${
+            props.okRequestProfile && 'profile__successful-request_active'
+          }`}>
+          Данные успешно изменены
+        </p>
         <div className="profile__control">
           <button
             disabled={!isValid}
             type="submit"
-            className="profile__item-control hover hover_type_link">
+            className={`profile__item-control hover hover_type_link ${
+              !isValid && 'profile__item-control_disabled'
+            }`}>
             Редактировать
           </button>
           <p
