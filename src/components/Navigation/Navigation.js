@@ -1,7 +1,7 @@
 import './Navigation.css';
-import { Link, Route, Switch, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-function Navigation({ onNavMenu, isOpen, locationPath, onClose }) {
+function Navigation({ onNavMenu, isOpen, onClose, loggedIn }) {
   let selectorNavigation = 'navigation';
   let selectorContent = 'navigation__content';
   let selectorListLinks = 'navigation__list-links';
@@ -12,7 +12,7 @@ function Navigation({ onNavMenu, isOpen, locationPath, onClose }) {
   let selectorClose = 'close hover hover_type_button';
   const selectorSignin = 'navigation__signin hover hover_type_button';
 
-  if (locationPath !== '/') {
+  if (loggedIn) {
     selectorNavigation += ' navigation_type_burger';
     selectorContent += ' navigation__content_type_burger';
     selectorListLinks += ' navigation__list-links_type_burger navigation__list-links_margin_left';
@@ -29,20 +29,8 @@ function Navigation({ onNavMenu, isOpen, locationPath, onClose }) {
     <>
       <nav className={selectorNavigation}>
         <div className={selectorContent}>
-          <Switch>
-            <Route exact path="/">
-              <ul className={selectorListLinks}>
-                <li className={selectorItemLink}>
-                  <Link to="/signup" className={selectorLinkElement}>
-                    Регистрация
-                  </Link>
-                </li>
-              </ul>
-              <Link to="/signin" className={selectorSignin}>
-                Войти
-              </Link>
-            </Route>
-            <Route exact path={['/movies', '/saved-movies', '/profile']}>
+          {loggedIn ? (
+            <>
               <div className={selectorClose} onClick={onClose}></div>
               <ul className={selectorListLinks}>
                 {isOpen && (
@@ -79,8 +67,21 @@ function Navigation({ onNavMenu, isOpen, locationPath, onClose }) {
               <Link to="/profile" className={selectorAccount} onClick={onClose}>
                 Аккаунт
               </Link>
-            </Route>
-          </Switch>
+            </>
+          ) : (
+            <>
+              <ul className={selectorListLinks}>
+                <li className={selectorItemLink}>
+                  <Link to="/signup" className={selectorLinkElement}>
+                    Регистрация
+                  </Link>
+                </li>
+              </ul>
+              <Link to="/signin" className={selectorSignin}>
+                Войти
+              </Link>
+            </>
+          )}
         </div>
       </nav>
       <div className={selectorBurger} onClick={onNavMenu}></div>
